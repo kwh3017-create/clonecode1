@@ -1,0 +1,53 @@
+.container {
+    width: 100%;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding-left: rem(32);
+    padding-right: rem(32);
+}
+
+.btn {
+    &--sm {
+        @include formBox(btn, sm, rem(4) rem(16));
+        font-size: rem(14);
+    }
+    &--lg {
+        @include formBox(btn, lg, rem(12) rem(24));
+        font-size: rem(24);
+    }
+}
+
+.title {
+    @include defineFont(32, 700);
+    margin-bottom: rem(12);
+}
+
+.mb-4 {
+    margin-bottom: 4rem;
+}
+
+@include media($pc) {
+    .btn--lg {
+        font-size: rem(18);
+    }
+}
+@include media($laptop) {
+    .title {
+        @include defineFont(18, 700);
+        margin-bottom: rem(16);
+    }
+
+    .mb-4 {
+        margin-bottom: rem(56);
+    }
+}
+
+@include media($tablet) {
+    .container {
+        padding-left: rem(24);
+        padding-right: rem(24);
+    }
+    .btn--lg {
+        @include formBox(btn, lg-down, rem(10) rem(16));
+    }
+}

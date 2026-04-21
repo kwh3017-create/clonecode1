@@ -1,0 +1,541 @@
+
+body {
+    font-family: 'Pretendard';
+    background-color: $blackColor;
+    color: $whiteColor;
+    overflow-x: hidden;
+}
+
+// header 
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: rem(20) 0;
+    z-index: 100;
+
+    .container {
+        // display: flex;
+        // justify-content: space-between;
+        // align-items: center;
+        @include flex(space-between, center);
+    }
+
+    .logo a {
+        display: block;
+
+        img {
+            width: 100%;
+            max-width: rem(150);
+        }
+    }
+
+    &__right {
+        // display: flex;
+        // gap: rem(10);
+        @include flex($gap: rem(10));
+
+        select {
+            @include formBox(select, sm, rem(4) rem(10));
+
+            option {
+                color: $blackColor;
+            }
+        }
+        
+        a {
+            display: block;
+            line-height: rem(24);
+        }
+    }
+}
+
+.visual {
+    width: 100%;
+    min-height: rem(996);
+    background-image: url("../img/netflix-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    @include flex(center, center);
+
+    &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(360deg, rgba(0, 0, 0, 0.8500) 8.000%, rgba(0, 0, 0, 0.8465) 15.67%, rgba(0, 0, 0, 0.8361) 23.33%, rgba(0, 0, 0, 0.8187) 31.00%, rgba(0, 0, 0, 0.7944) 38.67%, rgba(0, 0, 0, 0.7632) 46.33%, rgba(0, 0, 0, 0.7250) 54.00%, rgba(0, 0, 0, 0.6868) 61.67%, rgba(0, 0, 0, 0.6556) 69.33%, rgba(0, 0, 0, 0.6312) 77.00%, rgba(0, 0, 0, 0.6139) 84.67%, rgba(0, 0, 0, 0.6035) 92.33%, rgba(0, 0, 0, 0.6000) 100.0%);
+    }
+
+    &__container {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        max-width: rem(664);
+        margin: 0 auto;
+    }
+    &__title {
+        // font-size: rem(64);
+        // font-weight: 900;
+        @include defineFont(64, 900);
+    }
+    &__desc {
+        @include defineFont(20, 600);
+        margin: 2rem 0;
+    }
+
+    &__fieldbox {
+        @include flex(center, center, rem(8));
+        padding-top: 1rem;
+
+        input {
+            @include formBox(input, lg, rem(10) rem(16));
+            flex: 1;
+            font-size: 1rem;
+        }
+    }
+}
+
+.curve-wrap {
+    width: 100%;
+    height: rem(100);
+    background: linear-gradient(
+                    to right,
+                    rgba(33, 13, 22, 1) 16%,
+                    rgba(184, 40, 105, 1),
+                    rgba(229, 9, 20, 1),
+                    rgba(184, 40, 105, 1),
+                    rgba(33, 13, 22, 1) 84%
+                );
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+    margin-top: rem(-100);
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -10%;
+        width: 120%;
+        height: calc(100% - rem(4));
+        border-top-left-radius: 50% 100%;
+        border-top-right-radius: 50% 100%;
+        background: radial-gradient(
+                    50% 500% at 50% -420%,
+                    rgba(64, 97, 231, 0.4) 80%,
+                    rgba(0, 0, 0, 0.1) 100%
+                ),black;
+        margin-top: rem(4);
+    }
+}
+
+.banner {
+    .container {
+        @include flex($alignItems: center, $gap: rem(16));
+    }
+
+    &__img img {
+        width: rem(76);
+    }
+    &__text {
+        flex: 1;
+        background: linear-gradient(91deg, #261733, #151a3f);
+        padding: rem(16) rem(32);
+        border-radius: 1rem;
+        @include flex(space-between, center);
+
+        &-left {
+            line-height: 1.5;
+        }
+    }
+
+    &__title {
+        @include defineFont(20, 700, 1.5);
+    }
+
+    &__btn {
+        @extend .btn--sm;
+        font-size: 1rem;
+        background-color: rgba(128, 128, 128, 0.4);
+        line-height: 1.5;
+    }
+}
+
+.rank {
+    &__card {
+        display: block;
+        position: relative;
+
+        img {
+            width: 100%;
+            border-radius: 1rem;
+        }
+
+        h3 {
+            position: absolute;
+            font-size: 7.5rem;
+            bottom: rem(10);
+            left: rem(-30);
+            color: rgb(65, 65, 65);
+            -webkit-text-stroke: 0.25rem rgb(255, 255, 255);
+            text-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.5);
+
+            &::before {
+                content: attr(data-content);
+                -webkit-text-fill-color: rgb(0, 0, 0);
+                -webkit-text-stroke: 0;
+                text-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.5);
+                position: absolute;
+                // left: 0;
+                // top: 0;
+            }
+        }
+    }
+}
+
+.benefit {
+    &__list {
+        @include flex($gap: 1rem);
+    }
+    &__item {
+        flex: 1;
+        background: linear-gradient(149deg, #192247 0%, #210e17 96.86%);
+        padding: rem(32) rem(24);
+        height: rem(374);
+        border-radius: 1rem;
+
+        @include flex(space-between);
+        flex-direction: column;
+        line-height: 1.5;
+        word-break: keep-all;
+
+        h3 {
+            @include defineFont(24, 600);
+            margin-bottom: rem(24);
+        }
+        p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        &-icon {
+            text-align: right;
+        }
+    }
+}
+
+.faq {
+    &__list li {
+        @include defineFont(24);
+        margin-bottom: rem(8);
+    }
+
+    summary {
+        padding: rem(24) rem(54) rem(24) rem(24);
+        background-color: rgb(45, 45, 45);
+        margin-bottom: rem(1);
+        list-style: none;
+        position: relative;
+
+        &::after {
+            display: block;
+            content: '+';
+            position: absolute;
+            right: rem(24);
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.3s all;
+            @include defineFont(48, 100);
+        }
+
+        &:hover {
+            background-color: lighten($color: #2d2d2d, $amount: 10%);
+        }
+    }
+
+    .answer {
+        padding: rem(24);
+        background-color: rgb(45, 45, 45);
+    }
+
+    details[open] {
+        summary::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+    }
+}
+
+.signup {
+    .container {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        max-width: rem(664);
+        margin: 0 auto;
+    }
+    &__fieldbox {
+        @include flex(center, center, rem(8));
+        padding-top: 1rem;
+
+        input {
+            @include formBox(input, lg, rem(10) rem(16));
+            flex: 1;
+            font-size: 1rem;
+        }
+    }
+}
+
+.footer {
+    color: #ffffffB3;
+    padding-bottom: rem(96);
+
+    a {
+        text-decoration: underline;
+    }
+    &__mt {
+        margin-top: rem(36);
+    }
+
+    &__menu {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            width: 25%;
+            margin-top: rem(12);
+            @include defineFont(14);
+        }
+    }
+
+    &__select {
+        select {
+            @include formBox(select, sm, rem(4) rem(10));
+
+            option {
+                color: $blackColor;
+            }
+        }
+    }
+
+    .netflix__kr {
+        @include defineFont(14);
+    }
+
+    &__info {
+        @include defineFont(12, 400, 1.5);
+    }
+
+    .copyright {
+        @include defineFont(13);
+        color: #ffffff80;
+
+        a {
+            color: #448ef4;
+        }
+    }
+}
+
+
+// max-width 1280px 일 때 
+
+@include media($pc) {
+
+    // visual sec
+    .visual {
+        min-height: rem(760);
+
+        &__container {
+            max-width: rem(508);
+        }
+        &__title {
+            @include defineFont(40, 900);
+            br {
+                display: none;
+            }
+        }
+        &__desc {
+            @include defineFont(16, 500);
+            margin: 0.5rem 0 1.5rem;
+        }
+    }
+
+    // benefit sec 
+    .benefit {
+        &__list {
+            flex-wrap: wrap;
+        }
+        &__item {
+            flex-basis: calc((100% - 1rem) / 2);
+            height: rem(209);
+            padding: rem(24) rem(12) rem(12) rem(24); 
+
+            h3 {
+                @include defineFont(20, 600);
+                margin-bottom: rem(12);
+            }
+            
+        }
+    }
+
+    // signup sec 
+    .signup {
+        .container {
+            max-width: rem(643);
+        }
+    }
+
+    // footer 
+    .footer {
+        &__menu li {
+            width: calc(100% / 3);
+        }
+    }
+}
+
+@include media($laptop) {
+
+    .header {
+        .logo a img {
+            width: rem(90);
+        }
+    }
+    // visual sec
+    .visual {
+        min-height: rem(664);
+
+        &__container {
+            max-width: rem(432);
+        }
+        &__title {
+            @include defineFont(32, 900);
+        }
+    }
+
+    // banner sec 
+    .banner {
+        .container {
+            align-items: flex-start;
+        }
+        &__text {
+            padding: rem(12) rem(24);
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+    }
+
+    // benefit sec 
+    .benefit {
+        &__item {
+            flex-basis: 100%;
+            height: inherit;
+            padding: rem(24) rem(16) rem(10);
+
+            &-icon img {
+                width: rem(63);
+                padding-top: rem(16);
+            }
+        }
+    }
+
+    // faq sec 
+    .faq {
+        &__list li {
+            @include defineFont(18);
+        }
+
+        summary::after {
+            font-size: rem(40);
+        }
+    }
+
+    // signup sec
+    .signup {
+        .container {
+            max-width: 100%;
+        }
+    }
+
+    // footer 
+    .footer {
+        &__menu li {
+            width: 50%;
+        }
+    }
+}
+
+@include media($tablet) {
+
+    .visual {
+        &__container {
+            max-width: 100%;
+            padding-left: rem(32);
+            padding-right: rem(32);
+        }
+        &__fieldbox {
+            display: block;
+            input {
+                @include formBox(input, lg-down, rem(10) rem(16));
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+
+    .curve-wrap {
+        border-top-left-radius: 50% 20%;
+        border-top-right-radius: 50% 20%;
+
+        &::before {
+            border-top-left-radius: 50% 20%;
+            border-top-right-radius: 50% 20%;
+        }
+    }
+
+    // banner sec 
+    .banner {
+        margin-top: rem(-50);
+        position: relative;
+        .container {
+            display: block;
+        }
+        &__text {
+            margin-top: rem(-25);
+            padding: rem(32) rem(16);
+        }
+    }
+
+    // rank sec 
+    .rank {
+        &__card h3 {
+            font-size: rem(64);
+            left: rem(-15);
+        }
+    }
+
+    .signup {
+        .container {
+            text-align: left;
+        }
+
+        &__fieldbox {
+            display: block;
+            input {
+                @include formBox(input, lg-down, rem(10) rem(16));
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+
+    // footer 
+    .footer {
+        &__menu li {
+            width: 100%;
+        }
+    }
+}

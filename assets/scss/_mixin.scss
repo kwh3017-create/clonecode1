@@ -1,0 +1,52 @@
+@use 'sass:math';
+
+@function rem($size) {
+    // $size : calc($size / 16);
+    $size : math.div($size, 16);
+    @return #{$size}rem;
+}
+
+// form field 
+@mixin formBox($type: null, $size: sm, $pd : 0) {
+    // $type : button, select, input 
+    height: map-get($formBox, #{$size});
+    padding: $pd;
+    border-radius: 3px;
+
+    @if ($type == btn) {
+        background-color: $primaryColor;
+        color: $whiteColor;
+    } @else if ($type == select) {
+        background-color: transparent;
+        border: 1px solid $lineColor;
+    } @else if ($type == input) {
+        background-color: rgba(22, 22, 22, 0.7);
+        border: 1px solid $lineColor;
+    }
+
+}
+
+// flexbox 
+@mixin flex($justifyContent: center, $alignItems: stretch, $gap: null) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+    gap: $gap;
+}
+
+
+// font size 
+@mixin defineFont($size: null, $weight: 400, $lineHeight: 1.3, $letterSpacing: 0) {
+    font-size: rem($size);
+    font-weight: $weight;
+    line-height: $lineHeight;
+    letter-spacing: $letterSpacing;
+}
+
+
+// breakpoint 
+@mixin media($breakpoint) {
+    @media(max-width: $breakpoint) {
+        @content; // mixin이 적용이 된 곳의 스타일을 가져오는 역할.
+    }
+}
